@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static tailwind_tags %}
+{% load static %}
+{% block content %}
+<div class="flex mt-10 flex-col items-center justify-center">
+  <h1 class="text-6xl mb-4 font-bold text-center text-red-400 font-mono">Sponsors</h1>
+  <p class="text-center font-serif">
+    We are grateful to our sponsors for their support.
+  </p>
+</div>
+  {% for sponsor_type, sponsors in sponsors_by_type.items %}
+    <h2 class="text-6xl mt-10 mb-4 font-bold text-center text-red-400 font-mono">{{ sponsor_type }}</h2>
+    <div class="m-20 flex  flex-wrap  justify-center items-center ">
+      {% for sponsor in sponsors %}
+        <div class="flex-col text-center items-center transform duration-300 hover:scale-125">
+          <img class="h-16 sm:h-20 my-10 mx-6 sm:mx-12" src="{{ sponsor.image.url }}" alt="{{ sponsor.name }}">
+          <p>{{ sponsor.name }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% endblock %}
